@@ -1,0 +1,138 @@
+<!-- 230704 HTML 수업 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>230704 HTML 수업</title>
+</head>
+
+<body>
+  <h1>이름</h1>
+  <h2>coffee</h2>
+  <ul>
+    <li><del>아메리카노</del>: 4500 <span id="item1Up" style="cursor: pointer;"> + </span><span id="item1Count"> 0
+      </span><span id="item1down" style="cursor: pointer;"> - </span></li>
+    <p>아메리카노: 씀</p>
+    <hr />
+    <li>카푸치노: <u>5000</u> <span id="item2Up" style="cursor: pointer;"> + </span><span id="item2Count"> 0 </span><span
+        id="item2down" style="cursor: pointer;"> - </span></li>
+    <p>카푸치노: 부드러움</p>
+    <hr />
+    <li><i>에스프레소: 3500</i> <span id="item3Up" style="cursor: pointer;"> + </span><span id="item3Count"> 0 </span><span
+        id="item3down" style="cursor: pointer;"> - </span></li>
+    <p><strong>에스프레소: 겁나 씀</strong></p>
+    <hr />
+  </ul>
+
+  <h3 id="price">0원 입니다.</h3>
+
+
+  <table border="1" cellspacing="0" cellpadding="5" style="text-align: center;" width="400px" height="200px">
+    <tr>
+      <th>구분</th>
+      <th>음료</th>
+      <th>가격</th>
+      <th>이미지</th>
+    </tr>
+    <tr>
+      <td rowspan="2">커피</td>
+      <td>아메리카노</td>
+      <td>4,000원</td>
+      <td><img src="https://img.danawa.com/prod_img/500000/609/014/img/3014609_1.jpg?1650002669098" width="150px"></td>
+    </tr>
+    <tr>
+      <td>카푸치노</td>
+      <td>4,000원</td>
+      <td><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110601]_20210415143400773.jpg"
+          width="150px" ></td>
+    </tr>
+    <tr>
+      <td rowspan="2">주스</td>
+      <td>자바칩프라푸치노</td>
+      <td rowspan="2">5,000원</td>
+      <td><img src="https://image.istarbucks.co.kr/skuImg/[168016]_20210415154151606.jpg" width="150px"></td>
+    </tr>
+    <tr>
+      <td>프라푸치노</td>
+      <td><img src="https://photo.akmall.com/image0/goods/79/14/98/90/79149890_M_1500.jpg" width="150px"></td>
+    </tr>
+  </table>
+
+  <script>
+    let totalprice = 0;
+
+    let item1value = document.getElementById('item1Count').innerText;
+    let item2value = document.getElementById('item2Count').innerText;
+    let item3value = document.getElementById('item3Count').innerText;
+
+    const cal = function () {
+      totalprice = item1value * 4500 + item2value * 5000 + item3value * 3500
+      document.getElementById('price').innerHTML = `${totalprice}원입니다.`
+    }
+
+    item1Count = document.getElementById('item1Count')
+    document.getElementById("item1Up").addEventListener('click', function () {
+      console.log('click')
+      result = parseInt(item1value) + 1
+      document.getElementById('item1Count').innerHTML = result;
+      item1value = result
+      cal()
+    })
+    document.getElementById("item1down").addEventListener('click', function () {
+      if (parseInt(item1value)) {
+        result = parseInt(item1value) - 1
+        document.getElementById('item1Count').innerHTML = result;
+        item1value = result
+        cal()
+      } else {
+        console.log(123);
+        alert("0이하는 안됩니다.")
+      }
+    })
+
+    document.getElementById("item2Up").addEventListener('click', function () {
+      console.log('click')
+      result = parseInt(item2value) + 1
+      document.getElementById('item2Count').innerHTML = result;
+      item2value = result
+      cal()
+    })
+    document.getElementById("item2down").addEventListener('click', function () {
+      if (parseInt(item2value)) {
+        result = parseInt(item2value) - 1
+        document.getElementById('item2Count').innerHTML = result;
+        item2value = result
+        cal()
+      } else {
+        console.log(123);
+        alert("0이하는 안됩니다.")
+      }
+    })
+
+    document.getElementById("item3Up").addEventListener('click', function () {
+      result = parseInt(item3value) + 1
+      document.getElementById('item3Count').innerHTML = result;
+      item3value = result
+      cal()
+    })
+    document.getElementById("item3down").addEventListener('click', function () {
+      if (parseInt(item3value)) {
+        result = parseInt(item3value) - 1
+        document.getElementById('item3Count').innerHTML = result;
+        item3value = result
+        cal()
+      } else {
+        console.log(123);
+        alert("0이하는 안됩니다.")
+      }
+    })
+
+    /*
+      각 itemnCount 변수 설정
+      function 나누기
+    */
+  </script>
+</body>
+
+</html>
