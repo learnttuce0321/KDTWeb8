@@ -31,7 +31,7 @@
    margin-bottom: 50px;
  }
  li  {
-    margin: 0px 5px
+    /* margin: 0px 5px */
  }
  span {
     margin: 0px 5px;
@@ -52,6 +52,7 @@
     display: flex;
  }
  /* header2 */
+
  .header2 {
     display: flex;
     align-items: center;
@@ -70,7 +71,7 @@
  }
  .menus3 {
     display: flex;
- }
+ } 
 
  /* header4 */
  .header4 {
