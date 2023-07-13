@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        .div1 {
+            background-color: red;
+        }
+        .div2 {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div1"></div>    
+    <div class="div2"></div>
+    <div class="div1"></div>
+    <script>
+        console.log(document.querySelectorAll('div'))
+    </script>
+</body>
+<script></script>
+<script>
+    // let str = "Happy Day"
+
+    // console.log("length: " + str.length)
+
+    // console.log(str.toUpperCase())
+    // console.log(str.toLowerCase())
+
+    // console.log(str.indexOf('y'))   //대,소문자 가림 and 첫번째 글자만
+    // console.log(str.lastIndexOf('y'))
+
+    // console.log(str.slice(0, 5))    // ( 0 <= x < 5 )
+
+    // console.log(str.replace('p', 'a')); //첫번째 글자만, 기준값 사라짐
+    // console.log(str.replaceAll('a', 'p'));  //모든 글자
+
+    // console.log(str.repeat(10))
+
+    // console.log(str.split(' ')) //배열로 반환
+    
+    // console.log(str.trim()) //좌우 공백
+
+    // let days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+    // console.log(days.length);
+
+    // console.log(days.push('a', 'b')) // 원하는 만큼 요소를 뒤에 추가할 수 있음, length반환
+    // console.log(days.pop()) //마지막 요소 삭제 및 return
+
+    // console.log(days.unshift('c', 'd')) //원하는 만큼 요소를 앞에 추가할 수 있음, length 반환
+    // console.log(days.shift());  //첫번째 요소 삭제 및 return
+
+    // console.log(days.indexOf('Tue'))
+
+    // console.log(days.includes('Sat'))
+
+    // console.log(days.reverse());
+
+    // console.log(days.join(' ')) // 각 요소를 연결고리(?)로 묶어 문자열 반환
+
+    // let str = 'Holiday'
+    // console.log(str.split('').reverse().join(''))
+
+    // let arr =[1,2,3,4,5,6,7,8,9]
+
+    // for(let i of arr) {
+    //     //arr[]의 값을 가져올 수 있음
+    // }
+
+    // arr.forEach((item, index, arr) => {
+    //     //훅위치
+    //     // item => 변수
+    //     // index => 인덱스
+    //     // arr => 현재 배열
+    // })
+
+    // let arr = [];
+    
+    // for(let i = 1 ; i<=100; i++) {
+    //     arr.push(i);
+    // }
+
+    // let sum_for = 0
+    // for(let i = 0 ; i<100; i++) {
+    //     sum_for += arr[i]
+    // }
+    // let sum_forOf = 0
+    // for(let i of arr) {
+    //     sum_forOf += i
+    // }
+    // let sum_forEach = 0
+    // arr.forEach((a, i) => {
+    //     sum_forEach += a;
+    // }) 
+    // console.log(`sum_for: ${sum_for}`)
+    // console.log(`sum_forOf: ${sum_forOf}`)
+    // console.log(`sum_forEach: ${sum_forEach}`)
+
+    // let fruit1 = ['사과', '딸기', '파인애플', '수박', '참외', '오렌지', '자두', '망고'];
+    // let fruit2 = ['수박', '사과', '참외', '오렌지', '파인애플', '망고'];
+    
+    // let same = new Set([])
+    // let diff = new Set([]);
+    // for(let i of fruit1) {
+    //     for(let j of fruit2) {
+    //         if(i === j) {
+    //             same.add(i)
+    //         }
+    //     }
+    // }
+    // // for(let i of fruit1) {
+    // //     if(!same.has(i))
+    // //         diff.add(i)
+    // // }
+    // for(let i=0; i<fruit1.length; i++) {
+    //     if(!same.has(fruit1[i]))
+    //         diff.add(fruit1[i])
+    //     // if(!fruit1.has(same[i]))
+    //     //     diff.add(same[i])
+    // }
+    // console.log(same);
+    // console.log(diff);ㅊ
+
+    // console.log(Math.random(10));
+</script>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* input {
+            display: block;
+            margin: 5px 0px;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <input type="text" id="input"/>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li id="li">3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <button onclick="" >createNode</button>
+    <button onclick="append1()">appendNode</button>
+    <button onclick="appendChild1()">appendChildNode</button>
+    <button onclick="prepend1()">prepend</button>
+    <button onclick="before1()">before1</button>
+    <button onclick="after1()">after1</button>
+    <button onclick=""></button>
+    <button onclick=""></button>
+    <script>
+        function createNode() {
+            let li = document.createElement('li')
+            li.innerText = "새로 추가된 리스트"
+
+            let h3 = document.createElement(h3)
+            h3.innerText = "H3"
+        }
+        // 선택한 요소의 마지막 자식요소로 추가
+        // 노드 요소 이외에도 추가를 해줌
+        function append1() {
+            let inputValue = document.getElementById('input').value
+            let li = document.createElement('li')
+            li.innerText = inputValue
+            console.log(li)
+            let ul = document.querySelector('ul')
+            ul.append(li);
+        }
+        // 노드 요소만 추가할 수 있음
+        function appendChild1() {
+            let inputValue = document.getElementById('input').value
+            let li = document.createElement('li')
+            li.innerText = inputValue
+            console.log(li)
+            let ul = document.querySelector('ul')
+            ul.appendChild(li);
+        }
+        // 선택한 요소의 제일 앞 자식요소로 추가
+        function prepend1() {
+            let inputValue = document.getElementById('input').value
+            let li = document.createElement('li')
+            li.innerText = inputValue
+            console.log(li)
+            let ul = document.querySelector('ul')
+            ul.prepend(li);
+        }
+        // 선택한 요소의 앞에 (형제요소로 추가)
+        function before1() {
+            let standard = document.getElementById('li')
+            
+            let li = document.createElement('li')
+            li.innerText = "before"
+            standard.before(li)
+        }
+        // 선택한 요소의 뒤에 (형제요소로 추가)
+        function after1() {
+            let standard = document.getElementById('li')
+            
+            let li = document.createElement('li')
+            li.innerText = "after"
+            standard.after(li)
+        }
+        // 선택한 요소 삭제
+        // 요소가 완전히 삭제된다.
+        function remove1() {
+            let standard = document.getElementById('li')
+            standard.remove();
+        }
+        // 선택한 요소의 자식요소를 삭제
+        // 삭제된 요소를 반환한다.
+        function removechild1() {
+            let ul = document.querySelector('ul')
+            let standard = document.getElementById('li')
+            
+            ul.removeChild(standard);
+        }
+    </script> -->
+
+    <!-- <div>
+        <span>값1: </span>
+        <input type='text' id="cal_val_1">
+    </div>
+    <div>
+        <span>값2: </span>
+        <input type='text' id="cal_val_2">
+    </div>
+    <div>
+        <span>연산자: </span>
+        <input type='text' id="ysz">
+    </div>
+    <h2 id="result">결과: </h2>
+    <button onclick="cal()">계산하기</button>
+    <button onclick="recal()">초기화</button>
+    <script>
+        function cal() {
+            let value1 = document.getElementById('cal_val_1').value
+            let value2 = document.getElementById('cal_val_2').value
+            let ysz = document.getElementById('ysz').value
+            
+            console.log(value1,':',value2,':',ysz);
+            document.getElementById('result').innerHTML = `결과: ${getResult(parseInt(value1), parseInt(value2), ysz)}`
+        }
+
+        function getResult(v1, v2, ysz) {
+            console.log(v1, v2, ysz)
+            switch(ysz) {
+                case '+':
+                    return v1+v2;
+                    break;
+                case '-':
+                    return v1-v2;
+                    break;
+                case '*':
+                    return v1*v2;
+                    break;
+                case '/':
+                    return v1/v2;
+                    break;
+            }
+        }
+
+        function recal() {
+            document.getElementById('cal_val_1').value = ""
+            document.getElementById('cal_val_2').value = "" 
+            document.getElementById('ysz').value = ""
+            document.getElementById('result').innerHTML = "결과"
+        }
+    </script> -->
+
+    <h3>방명록입니다.</h3>
+    <div>
+        <span>작성자: </span><input id="writer"/>
+    </div>
+    <div style="display: flex; margin-top: 5px;">
+        <span style="margin-right: 5px;"> 방명록: </span><textarea id="writer_content"></textarea>
+    </div>
+    <button id="wirte_button" onclick="CreateGuestBook()">작성</button>
+    <table id="write_table" border="1">
+        <tr>
+            <th>번호</th>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성일</th>
+        </tr>
+    </table>
+    <script>
+        // let count = 1;
+
+        function getCurrentDate() {
+            let currentDate = new Date();
+            let fullYear = currentDate.getFullYear()
+            let month = currentDate.getMonth() + 1
+            let day = currentDate.getDate()
+            let hour = currentDate.getHours();
+            let minute = currentDate.getMinutes()
+
+            return `${fullYear}-${month}-${day} ${hour} : ${minute}`;
+        }
+
+        function clearContents() {
+            document.getElementById('writer').value = ""
+            document.getElementById('writer_content').value = ""
+        }
+        function createTableCell(value) {
+            const td = document.createElement('td');
+            td.textContent = value;
+            return td;
+        }
+
+        function appendTableCells(row, cells) {
+            for (const cell of cells) {
+                row.appendChild(cell);
+            }
+        }
+        function CreateGuestBook() {
+            let write_table = document.getElementById('write_table')
+            let tr = document.createElement('tr');
+            
+            const tdNumber = createTableCell(document.querySelectorAll('tr').length);
+            const tdWriter = createTableCell(document.getElementById('writer').value);
+            const tdContent = createTableCell(document.getElementById('writer_content').value);
+            const tdDate = createTableCell(getCurrentDate());
+
+            appendTableCells(tr, [tdNumber, tdWriter, tdContent, tdDate]);
+            write_table.append(tr);
+
+            clearContents();
+        }
+    </script>
+</body>
+</html>
+
