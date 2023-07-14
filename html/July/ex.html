@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+    <style>
+        .click {
+            width: 20px;
+            height: 20px;
+            background-color: lightgrey;
+            border-radius: 10px;
+            opacity: 0.5;
+            position: absolute;
+            z-index: 100;
+        }
+        .click-white {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            opacity: 0;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 100;
+        }
+        .d-flex {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: start;
+        }
+        td {
+            width: 150px;
+            height: 80px;
+            /* max-width: 78px; */
+            box-sizing: border-box;
+        }
+        tr > td:first-child {
+            color: red;
+        }
+        tr > td:last-child {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        $('body').click((e) => {
+            let circle = document.createElement('span')
+            circle.setAttribute('style',`position: absolute; top: ${e.clientY-10}px; left: ${e.clientX-10}px`)
+            circle.classList.add('click')
+            
+
+            $('body').append(circle)
+            $('.click').switchClass('click', 'click-white',300)
+            $('.click-white').remove()
+        })
+    </script>
+
+
+    <div>
+        <span>날짜: </span><input type="text" id="currentDay">
+        <br>
+        <span>내용: </span><input type="text" id="content">
+        <br>
+        <button onclick="uploadContent()">작성</button>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+        <h2 style="color: aquamarine;">2023 7월</h2>
+
+        <table cellpadding="10px">
+            <tr>
+                <th style="color: red;">日</th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th style="color: blue;">土</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="M7_1"><div class="d-flex"><span name='number'> 1</span><span name="content"></span></div></td>
+            </tr>
+            <tr>
+                <td id="M7_2"><div class="d-flex"><span name='number'> 2</span><span name="content"></span></div></td>
+                <td id="M7_3"><div class="d-flex"><span name='number'> 3</span><span name="content"></span></div></td>
+                <td id="M7_4"><div class="d-flex"><span name='number'> 4</span><span name="content"></span></div></td>
+                <td id="M7_5"><div class="d-flex"><span name='number'> 5</span><span name="content"></span></div></td>
+                <td id="M7_6"><div class="d-flex"><span name='number'> 6</span><span name="content"></span></div></td>
+                <td id="M7_7"><div class="d-flex"><span name='number'> 7</span><span name="content"></span></div></td>
+                <td id="M7_8"><div class="d-flex"><span name='number'> 8</span><span name="content"></span></div></td>
+            </tr>
+            <tr>
+                <td id="M7_9"><div class="d-flex"><span name='number'> 9</span><span name="content"></span></div></td>
+                <td id="M7_10"><div class="d-flex"><span name='number'>10</span><span name="content"></span></div></td>
+                <td id="M7_11"><div class="d-flex"><span name='number'>11</span><span name="content"></span></div></td>
+                <td id="M7_12"><div class="d-flex"><span name='number'>12</span><span name="content"></span></div></td>
+                <td id="M7_13"><div class="d-flex"><span name='number'>13</span><span name="content"></span></div></td>
+                <td id="M7_14"><div class="d-flex"><span name='number'>14</span><span name="content"></span></div></td>
+                <td id="M7_15"><div class="d-flex"><span name='number'>15</span><span name="content"></span></div></td>
+            </tr>
+            <tr>
+                <td id="M7_16"><div class="d-flex"><span name='number'>16</span><span name="content"></span></div></td>
+                <td id="M7_17"><div class="d-flex"><span name='number'>17</span><span name="content"></span></div></td>
+                <td id="M7_18"><div class="d-flex"><span name='number'>18</span><span name="content"></span></div></td>
+                <td id="M7_19"><div class="d-flex"><span name='number'>19</span><span name="content"></span></div></td>
+                <td id="M7_20"><div class="d-flex"><span name='number'>20</span><span name="content"></span></div></td>
+                <td id="M7_21"><div class="d-flex"><span name='number'>21</span><span name="content"></span></div></td>
+                <td id="M7_22"><div class="d-flex"><span name='number'>22</span><span name="content"></span></div></td>
+            </tr>
+            <tr>
+                <td id="M7_23"><div class="d-flex"><span name='number'>23</span><span name="content"></span></div></td>
+                <td id="M7_24"><div class="d-flex"><span name='number'>24</span><span name="content"></span></div></td>
+                <td id="M7_25"><div class="d-flex"><span name='number'>25</span><span name="content"></span></div></td>
+                <td id="M7_26"><div class="d-flex"><span name='number'>26</span><span name="content"></span></div></td>
+                <td id="M7_27"><div class="d-flex"><span name='number'>27</span><span name="content"></span></div></td>
+                <td id="M7_28"><div class="d-flex"><span name='number'>28</span><span name="content"></span></div></td>
+                <td id="M7_29"><div class="d-flex"><span name='number'>29</span><span name="content"></span></div></td>
+            </tr>
+            <tr>
+                <td id="M7_30"><div class="d-flex"><span name='number'>30</span><span name="content"></span></div></td>
+                <td id="M7_31"><div class="d-flex"><span name='number'>31</span><span name="content"></span></div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script>
+        $('td').click(function(e){            
+            const idNum = e.currentTarget.id
+
+            let day = $(`#${idNum} span[name='number']`).text()
+            $('#currentDay').val(day)           
+        })
+        function uploadContent() {
+            const idNum = `M7_${$('#currentDay').val().trim()}`
+            console.log(idNum)
+            const con = $('#content').val()
+            $(`#${idNum} span[name='content']`).text(con);
+        }
+    </script>
+
+</body>
+</html>
