@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Fasthand&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"
+      integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        font-family: "Black Han Sans", sans-serif;
+      }
+      h3 {
+        box-sizing: border-box;
+      }
+      .click {
+        width: 100%;
+        text-align: center;
+        border: 5px solid white;
+        border-bottom: 0px;
+        border-radius: 5px;
+      }
+      .unclick {
+        width: 100%;
+        text-align: center;
+        border: 0px;
+      }
+      .card {
+        margin: 10px;
+      }
+      nav a {
+        color: white !important;
+      }
+    </style>
+  </head>
+  <body style="background-color: black; color: white">
+    <nav class="navbar navbar-expand-lg bg-black">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner" style="height: 600px; overflow: hidden">
+          <div class="carousel-item active">
+            <img
+              src="../../img/startbucks.png"
+              class="d-block w-100"
+              height="1000px"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="../../img/google.png"
+              class="d-block w-100"
+              height="1000px"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="../../img/naver.jpg"
+              class="d-block w-100"
+              height="1000px"
+              alt="..."
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="text-center">
+        <div class="mt-5 mb-5">
+          <span class="text-warning fs-1">1번만 </span
+          ><span class="fs-2">결제하면 </span
+          ><span class="text-warning fs-1">1년간 </span
+          ><span class="fs-2">무료!</span>
+          <br />
+          <span class="fs-1">유명한 싸이트 수업듣고 만들기!</span>
+        </div>
+        <br />
+        <div class="d-flex flex-column mt-5">
+          <h2 class="mb-4 text-warning">무엇이 있나요?</h2>
+          <h3 class="mb-4">
+            <span class="text-success">+</span> 기본적인 HTML, CSS 부터
+            react까지!
+          </h3>
+          <h3 class="mb-4">
+            <span class="text-success">+</span> node.js와 MongoDB를 통해 백엔드!
+          </h3>
+          <h3 class="mb-4">
+            <span class="text-success">+</span> python으로 AI!
+          </h3>
+          <h3 class="mb-4">
+            <span class="text-success">+</span> 마지막으로 데이터분석도!
+          </h3>
+        </div>
+      </div>
+      <div class="mt-5">
+        <div id="card_container" class="d-flex">
+          <h3 id="card1" class="click">FrontEnd</h3>
+          <h3 id="card2" class="unclick">BackEnd</h3>
+          <h3 id="card3" class="unclick">AI</h3>
+          <h3 id="card4" class="unclick">Data Analyze</h3>
+        </div>
+        <div id="content_container">
+          <div
+            id="card1content"
+            class="d-block d-flex justify-content-evenly"
+            style="flex-wrap: wrap; align-items: start"
+          >
+            <div class="card" style="width: 18rem">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">HTML</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">CSS</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">JS</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">react</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="card2content"
+            class="d-none d-flex justify-content-evenly"
+            style="flex-wrap: wrap; align-items: start"
+          >
+            <div class="card" style="width: 18rem">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">node.js</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">MongoDB</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div
+            id="card3content"
+            class="d-none d-flex justify-content-evenly mt-5 text-warning"
+          >
+            <h2>준비 중 입니다!</h2>
+          </div>
+          <div
+            id="card4content"
+            class="d-none d-flex justify-content-evenly mt-5 text-warning"
+          >
+            <h2>준비 중 입니다!</h2>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      $("#card_container h3").click((e) => {
+        let showPageNumber = e.target.id;
+
+        HowShowCardNumber(showPageNumber);
+        HowShowCardContent(showPageNumber);
+      });
+      function HowShowCardNumber(showPageNumber) {
+        $("#card_container h3").addClass("unclick");
+        $("#card_container h3").removeClass("click");
+
+        $(`#${showPageNumber}`).removeClass("unclick");
+        $(`#${showPageNumber}`).addClass("click");
+      }
+      function HowShowCardContent(showPageNumber) {
+        $("#content_container>div").addClass("d-none");
+        $("#content_container>div").remove("d-block");
+        $(`#${showPageNumber}content`).removeClass("d-none");
+        $(`#${showPageNumber}content`).addClass("d-block");
+      }
+    </script>
+    <div style="margin-top: 1000px; padding: 200px 0px; display: flex; flex-direction: column;">
+      <p style="word-break: keep-all; white-space: pre-wrap; font-size: 32px">
+        내 모든 금융 내역을 한눈에 조회하고 한 곳에서 관리하세요. 이제껏 경험 못 했던 쉽고 편리한 금융 서비스, 토스와 함께라면 당신의 일상이 새로워질 거예요.
+
+
+      </p>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
