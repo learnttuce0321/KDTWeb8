@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/230728.css">
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style>
+        img {
+            width: 350px;
+            height: 350px;
+        }
+        .container{
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+        }
+        .button{
+            position: relative;
+            height: 50px;
+            width: 400px;
+            top: 15px;
+            left: 55px;
+        }
+        button{
+            color: white;
+            background-color: black;
+        }
+        .img {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border: 1px solid black;
+            left: 25px;
+        }
+        .img_toggle_d_none {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <p>background-color: yellow</p>
+    <a href="/exercise">exercise</a>
+    <a href="/pill">pill</a>
+    <a href="/health">health</a>
+
+    <div class="container">
+        <div class="img">
+            <img class="a img_toggle_d_none" src="img/apple.jpg" alt="사과">
+            <img class="b img_toggle_d_none" src="https://i.namu.wiki/i/Mj0aArUbJiq5_c500MqmbYyDPWnSiDBCsxbesdkR0XTOtDvwrjj2ponJvctbYgQ7zPE_LvjsJHAl786rZu0tkw.webp" alt="바나나">
+            <img class="g img_toggle_d_none" src="https://www.100ssd.co.kr/news/photo/202208/89896_70031_1951.jpg" alt="포도">
+            <img class="bog img_toggle_d_none" src="https://www.sanghafarm.co.kr/sanghafarm_Data/upload/shop/product/201808/A0003115_2018080113361430071.jpg" alt="복숭아">
+        </div>
+        <div class="button">
+            <button class="aa" onclick="aaa()">사과</button>
+            <button class="bb" onclick="bbb()">바나나</button>
+            <button class="gg" onclick="ggg()">포도</button>
+            <button class="bogg" onclick="boggg()">복숭아</button>
+            <button class="reset" onclick="re()">초기화</button>
+        </div>
+    </div>
+
+    
+
+    <% for(let i=0; i<9; i++) { %>
+        <% for(let j=1; j<=9; j++) {%>
+            <span><%=data[i]%> * <%=j%> = <%=data[i]*j%></span>
+            <br>
+        <%}%>
+        <br>
+    <%}%>
+
+
+    <script>
+        function aaa() {
+            $('.a').removeClass('img_toggle_d_none');
+            $('.b').addClass('img_toggle_d_none');
+            $('.g').addClass('img_toggle_d_none');
+            $('.bog').addClass('img_toggle_d_none');
+        }
+        function bbb() {
+            $('.b').removeClass('img_toggle_d_none');
+            $('.a').addClass('img_toggle_d_none');
+            $('.g').addClass('img_toggle_d_none');
+            $('.bog').addClass('img_toggle_d_none');
+        }
+        function ggg() {
+            $('.g').removeClass('img_toggle_d_none');
+            $('.a').addClass('img_toggle_d_none');
+            $('.b').addClass('img_toggle_d_none');
+            $('.bog').addClass('img_toggle_d_none');
+        }
+        function boggg() {
+            $('.bog').removeClass('img_toggle_d_none');
+            $('.a').addClass('img_toggle_d_none');
+            $('.g').addClass('img_toggle_d_none');
+            $('.b').addClass('img_toggle_d_none');
+        }
+        function re(){
+            $('.bog').addClass('img_toggle_d_none');
+            $('.a').addClass('img_toggle_d_none');
+            $('.g').addClass('img_toggle_d_none');
+            $('.b').addClass('img_toggle_d_none');
+        }
+    </script>
+
+</body>
+</html>
