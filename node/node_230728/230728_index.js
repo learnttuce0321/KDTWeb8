@@ -13,7 +13,7 @@ APP.set('views', './views')
 // APP.use('./public', express.static('public/css'))
 APP.use(express.static('public'))
 // APP.use('/public', express.static(path.join(__dirname, 'public')))
-console.log(path)
+console.log(express.static('public'))
 APP.get('/', (req, res) => {
     res.render('test', {data: [1,2,3,4,5,6,7,8,9]})
 })

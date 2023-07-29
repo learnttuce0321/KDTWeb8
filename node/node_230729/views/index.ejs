@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="width: 100vw; height: 100vh; margin: 0; transition: all 1s;">
+
+    <script>
+        // console.log(1)
+        // setTimeout(() => {
+        //     console.log(2)
+        // }, 1000);
+        // console.log(3)
+
+        // function Mainfn( param1, param2, callback ) {
+            
+        //     let result = param1 + param2 
+
+        //     callback(result)
+        // }
+        // function CallBackfn(result) {
+        //     console.log(result)
+        // }
+        // Mainfn(1, 2, CallBackfn)
+    </script>
+    <script>
+        // function PracticePromise(flag) {
+        //     return new Promise(function(resolve, reject) {
+        //         if(flag) {
+        //             console.log(123) // 왜 출력이 안되는거지?
+        //             resolve('promise상태는 fulfilled, 이때 flag값은 true')
+        //         } else {
+        //             reject('promise상태는 reject, 이때 flag값은 false')
+        //         }
+        //     })
+        // }
+
+        // PracticePromise(true)
+        // .then((result) => {
+        //     console.log(result)
+        // })
+        // .catch((err) => {
+        //     console.log(err)
+        // })
+        // .finally(() => {
+        //     console.log('finally!')
+        // })
+    </script>
+    <script>
+        // let product
+        // let price
+
+        // function GoMart() {
+        //     console.log('고민중')
+        // }
+        // function SelectProduct() {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log('고민완료')
+        //             product = '펩시제로라임맛'
+        //             price = 2000
+        //             if( price <= 2000) {
+        //                 resolve()
+        //             }                        
+        //             else
+        //                 reject('너무 비싸다...')
+        //         }, 2000)
+        //     }) 
+        // }
+        // function Pay() {
+        //     console.log(`제품: ${product}, 가격: ${price}`)
+        // }
+
+        // GoMart()
+        // SelectProduct()
+        // .then(Pay) 
+        // .catch((error) => {
+        //     console.log(error)
+        // })
+    </script>
+    <script>
+        // function add(n1, n2) {
+        //     return new Promise(function(resolve, reject) {
+        //         setTimeout(() => {
+        //             let result = n1 + n2
+        //             // resolve(result)
+        //             reject(new Error('에러'))
+        //         }, 1000)
+        //     })
+        // }
+        // function mul(n) {
+        //     return new Promise(function(resolve, reject) {
+        //         setTimeout(() => {
+        //             let result = n * 3
+        //             resolve(result)
+        //         }, 1000)
+        //     })
+        // }
+        // function sub(n) {
+        //     return new Promise(function(resolve, reject) {
+        //         setTimeout(() => {
+        //             let result = n - 1
+        //             resolve(result)
+        //         }, 1000)
+        //     })
+        // }
+        // add(4, 3)
+        // .then((result) => {
+        //     console.log(result)
+        //     return mul(result)
+        // })
+        // .then((result) => {
+        //     console.log(result)
+        //     return sub(result)
+        // })
+        // .then((result) => {
+        //     console.log(result)
+        // })
+        // .catch((error) => {
+        //     console.log
+        // })
+    </script>
+    <script>
+        // let product
+        // let price
+
+        // function GoMart() {
+        //     console.log('고민중')
+        // }
+        // function SelectProduct() {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log('고민완료')
+        //             product = '펩시제로라임맛'
+        //             price = 2000
+        //             if( price <= 2000) {
+        //                 resolve()
+        //             }                        
+        //             else
+        //                 reject('너무 비싸다...')
+        //         }, 2000)
+        //     }) 
+        // }
+        // function Pay() {
+        //     console.log(`제품: ${product}, 가격: ${price}`)
+        // }
+        // async function exec() {
+        //     GoMart()
+        //     await SelectProduct()
+        //     Pay()
+        // }
+
+        // exec()
+    </script>
+    <script>
+    //     function call(name) {
+    //         return new Promise((res, rej) => {
+    //             setTimeout(() => {
+    //             console.log(name)
+    //             res(name)
+    //             }, 1000)
+    //         })
+    //     }
+    //     function back() {
+    //         return new Promise((res, rej) => {
+    //             setTimeout(() => {
+    //             console.log('back')
+    //             res('back')
+    //             }, 1000)
+    //         })
+    //     }
+    //     function hell()  {
+    //         return new Promise((res, rej) => {
+    //             setTimeout(() => {
+    //             res('callback hell')
+    //             }, 1000)
+    //         })
+    //     }
+
+    //     call('kim')
+    //     .then((result) => {
+    //         console.log(result + '반가워')
+    //         return back()
+    //     })
+    //     .then((result) => {
+    //         console.log(result + '를 실행했구나')
+    //         return hell()
+    //     })
+    //     .then((result) => {
+    //         console.log('여기는' + result)
+    //     })
+        
+    </script>
+    <script>
+    //     function call(name) {
+    //         return new Promise((res, rej) => {
+    //             setTimeout(() => {
+    //             console.log(name)
+    //             res(name)
+    //             }, 1000)
+    //         })
+    //     }
+    //     function back() {
+    //         return new Promise((res, rej) => {
+    //             setTimeout(() => {
+    //             console.log('back')
+    //             res('back')
+    //             }, 1000)
+    //         })
+    //     }
+    //     function hell()  {
+    //         return new Promise((res, rej) => {
+    //             setTimeout(() => {
+    //             res('callback hell')
+    //             }, 1000)
+    //         })
+    //     }
+
+    //     async function exec() {
+    //         let user = await call('kim')
+    //         console.log(user + '반가워')
+    //         let txt = await back()
+    //         console.log(txt + '를 실행했구나')
+    //         let hel = await hell()
+    //         console.log('여기는' + hel)
+    //     }
+    //     exec()
+    </script>
+    <script>
+        let body = document.querySelector('body')
+        // let promise = new Promise((res, rej) => {
+        //     setTimeout(() => {
+        //         body.style.backgroundColor = 'red'
+        //         res()
+        //     }, 1000)
+        // })
+
+        
+        // promise
+        // .then(() => {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             body.style.backgroundColor = 'orange'
+        //             res()
+        //         }, 1000);
+        //     })
+        // })
+        // .then(() => {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             body.style.backgroundColor = 'yellow'
+        //             res()
+        //         }, 1000);
+        //     })
+        // })
+        // .then(() => {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             body.style.backgroundColor = 'green'
+        //             res()
+        //         }, 1000);
+        //     })
+        // })
+        // .then(() => {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             body.style.backgroundColor = 'blue'
+        //             res()
+        //         }, 1000);
+        //     })
+        // })
+        // .then(() => {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             body.style.backgroundColor = 'navy'
+        //             res()
+        //         }, 1000);
+        //     })
+        // })
+        // .then(() => {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             body.style.backgroundColor = 'purple'
+        //             res()
+        //         }, 1000);
+        //     })
+        // })
+
+        function ChangeColor(color) {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    body.style.backgroundColor = color
+                    res()
+                }, 1000)
+            })
+
+        }
+        async function exec() {
+            await ChangeColor('red')
+            await ChangeColor('orange')
+            await ChangeColor('yellow')
+            await ChangeColor('green')
+            await ChangeColor('blue')
+            await ChangeColor('navy')
+            await ChangeColor('purple')
+        }
+
+        exec()
+    </script>
+</body>
+</html>
