@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <!-- <form name="register">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" required />
+        <br />
+        성별
+        <input type="radio" name="gender" id="male" value="male" />
+        <label for="male">남성</label>
+        <input type="radio" name="gender" id="female" value="female" />
+        <label for="male">여성</label>
+
+        <br />
+        <button type="button" onclick="getByAjax()">ajax get 제출</button>
+        <button type="button" onclick="postByAjax()">ajax post 제출</button>
+        <button type="button" onclick="getByAxios()">axios get 제출</button>
+        <button type="button" onclick="postByAxios()">axios post 제출</button>
+        <button type="button" onclick="getByFetch()">fetch get 제출</button>
+        <button type="button" onclick="postByFetch()">fetch post 제출</button>
+    </form> -->
+    <form name="form" action="/exercise1" method="get">
+        <label for="user_name">이름 </label><input type="text" name="user_name" id="user_name" required />
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="user_gender" id="user_gender_male" value="남자" required />
+            <label for="user_gender_male">남자</label>
+            <input type="radio" name="user_gender" id="user_gender_female" value="여자" required />
+            <label for="user_gender_female">여자</label>
+        </fieldset>
+        <fieldset>
+            <legend>생년월일</legend>
+            <select name="user_date_year" id="user_date_year">
+                <%for(let i=1990; i<=2023; i++) {%>
+                    <option value="<%= i %>">
+                        <%= i %>
+                    </option>
+                    <% } %>
+            </select>
+            <label for="user_data_year">년</label>
+            <select name="user_date_month" id="user_date_month">
+                <%for(let i=1; i<=12; i++) {%>
+                    <option value="<%= i %>">
+                        <%= i %>
+                    </option>
+                    <% } %>
+            </select>
+            <label for="user_date_month">월</label>
+            <select name="user_date_day" id="user_date_day">
+                <%for(let i=1; i<=31; i++) {%>
+                    <option value="<%= i %>">
+                        <%= i %>
+                    </option>
+                    <% } %>
+            </select>
+            <label for="user_date_day">일</label>
+        </fieldset>
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" value="interest_trip" id="interest_trip" name="user_interest">
+            <label for="interest_trip">여행</label>
+            <input type="checkbox" value="interest_fashion" id="interest_fashion" name="user_interest">
+            <label for="interest_fashion">패션</label>
+            <input type="checkbox" value="interest_food" id="interest_food" name="user_interest">
+            <label for="interest_food">음식</label>
+        </fieldset>
+
+        <button type="submit">submit</button>
+        <button type="button" onclick="getUserInfoByAxios()">회원가입</button>
+    </form>
+    <!-- 
+        <fieldset>
+            <legend>선택</legend>
+            <label for="user_color">좋아하는 색상</label>
+            <input type="color" name="user_color" id="user_color" />
+            <label for="user_number">좋아하는 숫자</label>
+            <input type="number" name="user_number" id="user_number" />
+        </fieldset>
+     -->
+    <div class="result_container">
+
+    </div>
+    <!-- <script>
+        const container = document.querySelector('.result_container')
+
+        function getByAjax() {
+            console.log('getByAjax')
+
+            //여러개의 폼 중 선택
+            const form = document.forms['register']
+
+            if (form.name.value.length === 0) {
+                alert('이름을 입력하세요')
+                return
+            }
+            if (form.gender.value.length === 0) {
+                alert('성별을 입력하세요')
+                return
+            }
+
+            const data = {
+                name: form.name.value,
+                gender: form.gender.value
+            }
+
+            form.name.value = ''
+            $('input:radio[name="gender"]').prop('checked', false)
+
+            $.ajax({
+                type: 'GET',
+                url: '/ajax',
+                data: data,
+                success: function (result) {
+                    console.log('front', result)
+                    container.innerHTML = `<h1>Get /ajax요청 완료 ${result.name}님은 ${result.gender}입니다.</h1>`
+                    container.style.color = 'blue'
+                }
+            })
+        }
+        function postByAjax() {
+            console.log('postByAjax')
+
+            //여러개의 폼 중 선택
+            const form = document.forms['register']
+
+            if (form.name.value.length === 0) {
+                alert('이름을 입력하세요')
+                return
+            }
+            if (form.gender.value.length === 0) {
+                alert('성별을 입력하세요')
+                return
+            }
+
+            const data = {
+                name: form.name.value,
+                gender: form.gender.value
+            }
+
+            form.name.value = form.gender.value = ''
+
+            $.ajax({
+                type: 'POST',
+                url: '/ajax',
+                data: data,
+                success: function (result) {
+                    console.log('front', result)
+                    container.innerHTML = `<h1>Post /ajax요청 완료 ${result.name}님은 ${result.gender}입니다.</h1>`
+                    container.style.color = 'red'
+                }
+            })
+        }
+        function getByAxios() {
+
+            console.log('getByAxios')
+            const form = document.forms['register']
+
+            if (form.name.value.length === 0) {
+                alert('이름을 입력하세요')
+                return
+            }
+            if (form.gender.value.length === 0) {
+                alert('성별을 입력하세요')
+                return
+            }
+
+            const data = {
+                name: form.name.value,
+                gender: form.gender.value
+
+            }
+
+            form.name.value = ''
+            $('input:radio[name="gender"]').prop('checked', false)
+
+            axios({
+                method: 'GET',
+                url: '/axios',
+                params: data
+            })
+                .then((result) => {
+                    console.log(result)
+                    container.innerHTML = `<h1>Get /axios요청 완료 ${result.data.name}님은 ${result.data.gender}입니다.</h1>`
+                    container.style.color = 'aqua'
+                })
+        }
+        function postByAxios() {
+            console.log('postByAxios')
+            const form = document.forms['register']
+
+            if (form.name.value.length === 0) {
+                alert('이름을 입력하세요')
+                return
+            }
+            if (form.gender.value.length === 0) {
+                alert('성별을 입력하세요')
+                return
+            }
+
+            const data = {
+                name: form.name.value,
+                gender: form.gender.value
+
+            }
+
+            form.name.value = ''
+            $('input:radio[name="gender"]').prop('checked', false)
+
+            axios({
+                method: 'POST',
+                url: '/axios',
+                data: data
+            }).then((result) => {
+                console.log(result)
+                container.innerHTML = `<h1>Post /axios요청 완료 ${result.data.name}님은 ${result.data.gender}입니다.</h1>`
+                container.style.color = 'gold'
+            })
+        }
+        function getByFetch() {
+            console.log('getByFetch')
+            const form = document.forms['register']
+
+            if (form.name.value.length === 0) {
+                alert('이름을 입력하세요')
+                return
+            }
+            if (form.gender.value.length === 0) {
+                alert('성별을 입력하세요')
+                return
+            }
+
+            const urlQuery = `?name=${form.name.value}&gender=${form.gender.value}`
+
+            form.name.value = ''
+            $('input:radio[name="gender"]').prop('checked', false)
+
+            fetch(`/fetch${urlQuery}`, {
+                method: 'GET'
+            }).then((result) => {
+                console.log(result)
+                return result.json()
+            }).then((data) => {
+                console.log(data)
+                container.innerHTML = `<h1>Post /axios요청 완료 ${data.name}님은 ${data.gender}입니다.</h1>`
+                container.style.color = 'limegreen'
+            })
+        }
+        function postByFetch() {
+            console.log('postByFetch')
+            const form = document.forms['register']
+
+            if (form.name.value.length === 0) {
+                alert('이름을 입력하세요')
+                return
+            }
+            if (form.gender.value.length === 0) {
+                alert('성별을 입력하세요')
+                return
+            }
+
+            const data = {
+                name: form.name.value,
+                gender: form.gender.value
+
+            }
+            form.name.value = ''
+            $('input:radio[name="gender"]').prop('checked', false)
+
+            fetch('/fetch', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .then((data) => {
+                    console.log(data)
+                    container.innerHTML = `<h1>Post /axios요청 완료 ${data.name}님은 ${data.gender}입니다.</h1>`
+                    container.style.color = 'pink'
+                })
+        }
+    </script> -->
+    <script>
+        function getUserInfoByAxios() {
+            const form = document.forms['form']
+            const checkbox = []
+
+            for (let item of document.querySelectorAll('input[name="user_interest"]')) {
+                if (item.checked) {
+                    checkbox.push(item.value)
+                }
+            }
+
+            const data = {
+                name: form.user_name.value,
+                gender: form.user_gender.value,
+                year: form.user_date_year.value,
+                month: form.user_date_month.value,
+                day: form.user_date_day.value,
+                interest: checkbox
+            }
+
+            axios({
+                method: 'GET',
+                url: '/exercise1',
+                params: data
+            }).then((res) => {
+                console.log(res)
+                document.querySelector('.result_container').innerHTML = `
+                <h1>${res.data.name} ${res.data.gender} ${res.data.year}년 ${res.data.month}월 ${res.data.day}일 ${res.data.interest}</h1>
+                `
+            })
+
+        }
+    </script>
+</body>
+
+</html>
