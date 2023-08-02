@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>파일전송 FORM 연습</h1>
+    <form method="POST" action="/uploadFile" enctype="multipart/form-data">
+        <input type="file" name="userFile" /> <br />
+        <input type="text" name="fileTitle" />
+        <button type="submit">업로드</button>
+    </form>
+    <h1>파일s전송 FORM ver1연습</h1>
+    <form method="POST" action="/uploadFile/ver1" enctype="multipart/form-data">
+        <input type="file" name="userFile" multiple /> <br />
+        <input type="text" name="fileTitle" />
+        <button type="submit">업로드</button>
+    </form>
+    <h1>파일s전송 FORM ver2연습</h1>
+    <form method="POST" action="/uploadFile/ver2" enctype="multipart/form-data">
+        <input type="file" name="file1" /> <br />
+        <input type="text" name="fileTitle" /> <br />
+        <input type="file" name="file2" /> <br />
+        <input type="text" name="fileTitle" /> <br />
+        <button type="submit">업로드</button>
+    </form>
+    <h1>동적파일업로드</h1>
+    <form>
+        <input type="file" id="dynamicFile" name="dynamicUserFile" />
+        <button type="button" onclick="uploadFile()">업로드</button>
+    </form>
+    <br />
+    <img src="" width="200" />
+
+    <script>
+        function uploadFile() {
+            const formData = new FormData()
+            console.log(formData)
+            const file = document.querySelector('#dynamicFile')
+            formData.append('dynamicUserFile', file.files[0])
+            console.log(formData)
+            axios({
+                method: 'POST',
+                url: '/dynamic',
+                data: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then((res) => {
+                console.log(res)
+                document.querySelector('img').src = res.data.path
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -16,15 +16,8 @@
     </form>
     <div class="loginErrorContainer"></div>
     <script>
-        let func = () => {
-            let a = 0
-            console.log(this.a)
-        }
-
-        func() // undefined
-    </script>
-    <script>
         const errorContainer = document.querySelector('.loginErrorContainer')
+
         function checkTime(className, textColor) {
             if (className === 'error') {
                 errorContainer.innerHTML = `<span class="${className}">아이디 혹은 비밀번호가 잘못 되었습니다.<br /> 입력하신 내용을 다시 확인해 주세요</span>`
@@ -36,36 +29,9 @@
                 errorContainer.innerHTML = ''
             }, 5000)
         }
+
         function login() {
             const form = document.forms['loginform']
-
-            const pw = form.pw.value
-            var num = pw.search(/[0-9]/g);
-            var eng = pw.search(/[a-z]/ig);
-            var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-
-            console.log(form.id.value)
-            console.log(form.pw.value)
-
-            if (form.id.value.length === 0) {
-                checkTime('error', 'red')
-                return
-            } else if (!form.id.value.match(/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/)) {
-                checkTime('error', 'red')
-                return
-            }
-
-
-            if (pw.length < 8 || pw.length > 20) {
-                checkTime('error', 'red')
-                return
-            } else if (pw.search(/\s/) != -1) {
-                checkTime('error', 'red')
-                return
-            } else if (num < 0 || eng < 0 || spe < 0) {
-                checkTime('error', 'red')
-                return
-            }
 
             const data = {
                 userId: form.id.value,
@@ -75,8 +41,14 @@
                 method: "POST",
                 url: "/exercise2",
                 data: data
-            }).then(() => {
-                checkTime('success', 'blue')
+            }).then((res) => {
+                console.log(res.data.result)
+                if (res.data.result) {
+                    checkTime('success', 'blue')
+                } else {
+                    checkTime('error', 'red')
+                }
+
             })
         }
     </script>
