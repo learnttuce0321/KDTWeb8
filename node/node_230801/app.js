@@ -13,7 +13,7 @@ app.use(express.json())
 //     res.render('index')
 // })
 app.get('/', (req, res) => {
-    res.render('exercise2')
+    res.render('index')
 })
 
 app.get('/ajax', (req, res) => {

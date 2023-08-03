@@ -295,18 +295,15 @@
 
     </script>
     <script>
+        function ft(item) {
+            if (item.checked) {
+                return item.value
+            }
+        }
         function getUserInfoByAxios() {
-            console.log('========')
-            const items = [...document.querySelectorAll('input[name="user_interest"]')].filter((item) => {
-                if (item.checked) {
-                    console.log(item.value)
-                    return item.value
-                }
-            })
-            console.log(items)
-            console.log('========')
 
             const form = document.forms['form']
+
             let checkbox = [...document.querySelectorAll('input[name="user_interest"]')]
                 .filter(box => box.checked)
                 .map(box => box.value)
