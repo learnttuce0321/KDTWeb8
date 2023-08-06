@@ -23,8 +23,41 @@ const postVisitors = (req, callback) => {
             throw err
     })
 
-    console.log(req.body)
-    sql = 'select * from visitor'
+    sql = 'SELECT * FROM visitor'
+    conn.query(sql, (err, rows) => {
+        if (err)
+            throw err
+
+        callback(rows)
+    })
+}
+const deleteVisitors = (req, callback) => {
+    let sql = `DELETE FROM visitor WHERE id = ${req.body.id}`
+    conn.query(sql, (err, rows) => {
+        if (err)
+            throw err
+
+        callback(rows)
+    })
+}
+const getInfosForEdit = (req, callback) => {
+    let sql = `SELECT name, content FROM visitor WHERE id = ${req.query.id}`
+    console.log(sql)
+    conn.query(sql, (err, rows) => {
+        if (err)
+            throw err
+        callback(rows)
+    })
+}
+const editVisitors = (req, callback) => {
+    let sql = `UPDATE visitor set name='${req.body.name}', content='${req.body.content}' WHERE id = ${req.body.id}`
+    console.log('edit', sql)
+    conn.query(sql, (err, rows) => {
+        if (err)
+            throw err
+    })
+
+    sql = `SELECT * FROM visitor`
     conn.query(sql, (err, rows) => {
         if (err)
             throw err
@@ -33,4 +66,5 @@ const postVisitors = (req, callback) => {
     })
 }
 
-export { getVisitors, postVisitors }
+export { getVisitors, postVisitors, deleteVisitors, getInfosForEdit, editVisitors }
+
