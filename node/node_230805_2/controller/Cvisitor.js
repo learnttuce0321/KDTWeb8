@@ -1,4 +1,4 @@
-import { getVisitors, postVisitors, deleteVisitors, getInfosForEdit, editVisitors } from '../model/Visitor.js'
+import { getVisitors, postVisitors, deleteVisitors, getInfosForEdit, editVisitors, getOneVisitorInfo } from '../model/Visitor.js'
 
 const main = (req, res) => {
     res.render('index')
@@ -10,13 +10,13 @@ const getVisitor = (req, res) => {
 }
 const postVisitor = (req, res) => {
     postVisitors(req, (result) => {
-        res.render('visitor', { data: result })
+        res.send({ data: result })
     })
 
 }
 const deleteVisitor = (req, res) => {
     deleteVisitors(req, (result) => {
-        res.render('visitor', { data: result })
+        res.send({ data: result })
     })
 }
 const getInfoForEdit = (req, res) => {
@@ -27,8 +27,18 @@ const getInfoForEdit = (req, res) => {
 const editVisitor = (req, res) => {
     console.log('modify!')
     editVisitors(req, (result) => {
-        res.render('visitor', { data: result })
+        res.send({ data: result })
+    })
+}
+const getOneVisitor = (req, res) => {
+    if (isNaN(req.params.id))
+        res.render('404')
+
+    getOneVisitorInfo(req, (result) => {
+        if (!result[0])
+            res.render('404')
+        res.render('watchingVisitor', { data: result[0] })
     })
 }
 
-export { main, getVisitor, postVisitor, deleteVisitor, getInfoForEdit, editVisitor }
+export { main, getVisitor, postVisitor, deleteVisitor, getInfoForEdit, editVisitor, getOneVisitor }

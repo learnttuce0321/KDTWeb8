@@ -40,10 +40,9 @@
     <script>
         function uploadFile() {
             const formData = new FormData()
-            console.log(formData)
             const file = document.querySelector('#dynamicFile')
             formData.append('dynamicUserFile', file.files[0])
-            console.log(formData)
+
             axios({
                 method: 'POST',
                 url: '/dynamic',

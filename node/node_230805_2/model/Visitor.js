@@ -28,6 +28,7 @@ const postVisitors = (req, callback) => {
         if (err)
             throw err
 
+        console.log('check', rows)
         callback(rows)
     })
 }
@@ -65,6 +66,16 @@ const editVisitors = (req, callback) => {
         callback(rows)
     })
 }
+const getOneVisitorInfo = (req, callback) => {
+    let sql = `SELECT * FROM visitor WHERE id = ${req.params.id}`
+    console.log(sql)
+    conn.query(sql, (err, rows) => {
+        if (err)
+            throw err
 
-export { getVisitors, postVisitors, deleteVisitors, getInfosForEdit, editVisitors }
+        callback(rows)
+    })
+}
+
+export { getVisitors, postVisitors, deleteVisitors, getInfosForEdit, editVisitors, getOneVisitorInfo }
 
