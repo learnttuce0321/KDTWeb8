@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>회원가입</h3>
+        <form>
+            <label for="userIdInput">아이디</label>
+            <input type="text" id="userIdInput" name="userIdInput" />
+            <br />
+            <label for="userPwInput">비밀번호</label>
+            <input type="password" id="userPwInput" name="userPwInput" />
+            <br />
+            <label for="userNicknameInput">닉네임</label>
+            <input type="text" id="userNicknameInput" name="userNicknameInput" />
+            <br />
+            <button type="button" onclick="signinBtn()">회원가입</button>
+        </form>
+    </div>
+
+    <script>
+        const signinBtn = () => {
+            const userId = document.querySelector('#userIdInput').value
+            const userPw = document.querySelector('#userPwInput').value
+            const nickname = document.querySelector('#userNicknameInput').value
+
+            const data = {
+                userId,
+                userPw,
+                nickname
+            }
+
+            console.log(data)
+            axios({
+                method: 'POST',
+                url: 'signup',
+                data,
+            }).then((res) => {
+                if (res.data.code === 'good')
+                    window.location.href = '/signin'
+
+            })
+        }
+    </script>
+</body>
+
+</html>

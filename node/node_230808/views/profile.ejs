@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <input type="hidden" id="id" value="<%=result[0].id%>">
+    <span>아이디</span>
+    <input type="text" id="userId" value="<%=result[0].userid%>">
+    <span>비밀번호</span>
+    <input type="password" id="userPw" value="<%=result[0].pw%>">
+    <span>닉네임</span>
+    <input type="text" id="userNickname" value="<%=result[0].name%>">
+    <br />
+
+    <button type="button" onclick="modifyBtn()">수정</button>
+    <button type="button" onclick="deleteBtn()">삭제</button>
+    <script>
+        function modifyBtn() {
+            const id = document.querySelector('#id').value
+            const userId = document.querySelector('#userId').value
+            const userPw = document.querySelector('#userPw').value
+            const nickname = document.querySelector('#userNickname').value
+
+            axios({
+                method: 'POST',
+                url: '/profile/modify',
+                data: {
+                    id,
+                    userId,
+                    userPw,
+                    nickname
+                }
+            }).then(() => {
+                alert('수정 완료')
+            })
+        }
+        function deleteBtn() {
+            const id = document.querySelector('#id').value
+            axios({
+                method: 'POST',
+                url: '/profile/delete',
+                data: {
+                    id
+                }
+            }).then(() => {
+                window.location.href = '/'
+                alert('삭제 완료')
+            })
+        }
+    </script>
+</body>
+
+</html>
