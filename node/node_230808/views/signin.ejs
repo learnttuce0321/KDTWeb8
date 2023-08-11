@@ -45,7 +45,7 @@
                     form.action = '/profile'
 
                     form.innerHTML = `
-                        <input name="userId" value="${res.data.userid}"/>
+                        <input type="hidden" name="userId" value="${res.data.userid}"/>
                     `
                     document.body.append(form)
 
