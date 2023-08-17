@@ -5,14 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-    <a href="/setCookie">쿠키</a>
-    <a href="/getCookie">얻기</a>
-    <a href="/deleteCookie">삭제</a>
-    <br />
-    <a href="/name">얻기</a>
+    <form>
+        <input type="checkbox" name="oneDay" /> 하루 보지 않기
+        <button type="button" onclick="clickedHandler()">submit</button>
+    </form>
+
+    <script>
+        if ('<%= popup%>' === 'hidden') {
+            console.log(123)
+            document.querySelector('form').style.visibility = 'hidden'
+        }
+        function clickedHandler() {
+            document.querySelector('form').style.visibility = 'hidden'
+
+            const check = document.querySelector('input[name="oneDay"]')
+            if (check.checked) {
+                axios({
+                    method: 'POST',
+                    url: '/cookie/practice',
+                    data: {
+                        checked: true
+                    }
+                })
+            }
+        }
+    </script>
 </body>
 
 </html>

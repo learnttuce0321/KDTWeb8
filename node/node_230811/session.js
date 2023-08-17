@@ -6,6 +6,8 @@ const PORT = 8000
 
 app.set('view engine', 'ejs')
 app.set('views', './views')
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 // 세션 옵션 객체
 const sessionConfig = {
@@ -21,13 +23,33 @@ const sessionConfig = {
 //세션 미들웨어
 app.use(session(sessionConfig))
 
+const value = { id: '1234', pw: 'qwer' }
 
 app.get('/', (req, res) => {
-    req.session.name = '홍길동'
-    res.render('index')
+    res.render('main')
 })
 app.get('/name', (req, res) => {
     res.render(req.session.name)
+})
+app.get('/session', (req, res) => {
+    console.log(req.session.userLoggedIn)
+    if (req.session.userLoggedIn == undefined) {
+        res.render('index2')
+    } else {
+        res.render('index2', {
+            isLoggedIn: req.session.userLoggedIn
+        })
+    }
+})
+app.post('/session/practice', (req, res) => {
+    console.log(req.body.loggedIn)
+    if (req.body.id === value.id && req.body.pw === value.pw) {
+        console.log('성공')
+        req.session.userLoggedIn = req.body.id
+        res.send('로그인성공')
+    } else {
+        res.send('로그인 실패')
+    }
 })
 
 app.listen(PORT, () => {

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form>
+        <label for="id">아이디</label>
+        <input id="id" type="text">
+        <br />
+        <label for="pw">비밀번호</label>
+        <input id="pw" type="text">
+        <button type="button" onclick="loginHandler()">로그인</button>
+    </form>
+
+    <script>
+        (function isLoggedIn() {
+            const token = localStorage.getItem('loginToken')
+
+            if (token) {
+                axios({
+                    method: 'POST',
+                    url: '/verify',
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
+                }).then((response) => {
+                    if (response.data.result) {
+                        deleteForm()
+                        greet(response.data.userInfo.name)
+                    }
+                })
+            }
+        })()
+
+        function loginHandler() {
+            const id = document.querySelector('#id').value
+            const pw = document.querySelector('#pw').value
+
+            axios({
+                method: 'POST',
+                url: '/login',
+                data: {
+                    id, pw
+                }
+            }).then((response) => {
+                if (response.data.result) {
+                    localStorage.setItem('loginToken', response.data.token)
+                    deleteForm()
+                    greet(response.data.userInfo.name)
+
+                } else {
+                    alert(response.data.message)
+                }
+            })
+        }
+
+        function deleteForm() {
+            document.querySelector('form').style.display = 'none'
+        }
+
+        function loggedOut() {
+            localStorage.clear()
+            document.querySelector('form').style.display = 'block'
+            document.querySelector('div').style.display = 'none'
+        }
+
+        function greet(name) {
+            const div = document.createElement('div')
+            div.innerHTML = `
+            <h2>${name}님 환영합니다.</h2>
+            <button onclick="loggedOut()">로그아웃</button>
+            `
+
+            document.querySelector('body').append(div)
+        }
+
+    </script>
+</body>
+
+</html>

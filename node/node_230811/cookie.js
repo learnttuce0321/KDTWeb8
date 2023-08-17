@@ -7,10 +7,13 @@ const PORT = 8000
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
 // 쿠키파서 미들웨어(일반쿠키)
-// app.use(cookieParser())
+app.use(cookieParser())
 // 쿠키파서 미들웨어(암호화쿠키)
-app.use(cookieParser('abcdef'))
+// app.use(cookieParser('abcdef'))
 // 쿠키 옵션 객체
 const cookieConfig = {
     // httpOnly: 웹서버를 통해서만 쿠키에 접근 가능. 즉, 자바스크립트(document.cookie)에서의 쿠키 접근 차단 
@@ -21,13 +24,13 @@ const cookieConfig = {
     // secure: https로 통신하는 경우에만 쿠키 전송 가능
     // signed: 쿠키의 암호화결정(req.signedCookies)
     httpOnly: true,
-    maxAge: 60 * 1000,
-    signed: true
+    maxAge: 24 * 60 * 60 * 1000,
+    // signed: true
 }
 
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('main')
 })
 app.get('/setCookie', (req, res) => {
 
@@ -41,6 +44,16 @@ app.get('/getCookie', (req, res) => {
 app.get('/deleteCookie', (req, res) => {
     res.clearCookie('myCookie', cookieConfig)
     res.send('delete cookiex')
+})
+app.get('/cookie', (req, res) => {
+    console.log()
+    res.render('index', { popup: req.cookies.modal })
+})
+app.post('/cookie/practice', (req, res) => {
+    if (req.body.checked) {
+        res.cookie('modal', 'hidden', cookieConfig)
+        res.send({ result: true, msg: '쿠키생성완료' })
+    }
 })
 app.listen(PORT, () => {
     console.log(`localhost:${PORT}`)
