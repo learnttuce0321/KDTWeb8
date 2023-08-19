@@ -54,26 +54,33 @@ app.post('/login', (req, res) => {
             token,
             userInfo
         })
+
+        return
     }
     res.send({
         result: false,
         message: '로그인에 실패하였습니다.'
     })
+
 })
 
 app.post('/verify', (req, res) => {
-    console.log(req.headers.authorization)
-    const token = req.headers.authorization.split(' ')
 
-    if (token[0] === 'Bearer') {
-        jwt.verify(token[1], SECRET, (err, decoded) => {
-            if (err) {
-                return res.status(403).send({ result: false, message: '인증에 실패하였습니다.' })
-            }
-            return res.send({ result: true, userInfo })
-        })
+    if (req.headers.authorization) {
+        const token = req.headers.authorization.split(' ')
+
+        if (token[0] === 'Bearer') {
+            const rsult = jwt.verify(token[1], SECRET, (err, decoded) => {
+                if (err) {
+                    return res.status(403).send({ result: false, message: '인증에 실패하였습니다.' })
+                }
+                return res.send({ result: true, userInfo })
+            })
+        } else {
+            req.send({ result: false, message: '올바른 인증방식이 아닙니다.' })
+        }
     } else {
-        req.send({ result: false, message: '올바른 인증방식이 아닙니다.' })
+        res.redirect('/')
     }
 })
 
