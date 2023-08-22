@@ -1,4 +1,4 @@
-import { commentInfos } from '../model/Comment.js'
+import { commentInfos, addU } from '../model/Comment.js'
 
 const main = (req, res) => {
     res.render('index')
@@ -20,7 +20,13 @@ const comment = (req, res) => {
 const comments = (req, res) => {
     res.render('comments', { commentInfos: commentInfos() })
 }
+const add = (req, res) => {
+    const { name, gender, j } = req.body
+    addU(name, gender, j, (result) => {
+        res.send(result)
+    })
+}
 
 
 
-export { main, comment, comments }
+export { main, comment, comments, add }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <ul>
+        <li>
+            <%=username%>
+        </li>
+        <li>
+            <%=gender%>
+        </li>
+        <li>
+            <%=birthYear%>년<%=birthMonth%>월<%=birthDay%>일
+        </li>
+        <li>
+            <%=hobby%>
+        </li>
+        <% if(color) {%>
+            <li>
+                <%= color %>
+            </li>
+            <% } %>
+                <% if(number) {%>
+                    <li>
+                        <%= number %>
+                    </li>
+                    <% } %>
+    </ul>
+</body>
+
+</html>
