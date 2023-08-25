@@ -8,8 +8,44 @@
 </head>
 
 <body>
-    <a href="/cookie">a</a>
-    <a href="/session">b</a>
+    <a href="/cookie">로그인</a>
+    <div style="display: none;">
+        <h1>kdt8님 안녕하세요</h1>
+        <table>
+            <tr>
+                <th>회원</th>
+                <th>아이디</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <th>kdt8</th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>kdt9</th>
+            </tr>
+            <tr>
+                <th>3</th>
+                <th>kdt10</th>
+            </tr>
+            <tr>
+                <th>4</th>
+                <th>kdt11</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+        (function () {
+
+            if ('<%= data.loggedIn%>'.length != 0) {
+                document.querySelector('div').style.display = 'block'
+            } else {
+                console.log(123)
+                document.querySelector('div').style.display = 'none'
+            }
+        })()
+
+    </script>
 </body>
 
 </html>
