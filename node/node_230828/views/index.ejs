@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="chatArea">
+
+    </ul>
+    <form id="chatForm">
+        <input type="text" name="username" id="username"><br />
+        <input type="text" name="chat" id="chat"><br />
+        <button type="submit">확인</button>
+    </form>
+
+
+    <script>
+        const socket = new WebSocket("ws://localhost:8000")
+
+        const chatForm = document.getElementById('chatForm')
+        const chatArea = document.getElementById('chatArea')
+
+        socket.addEventListener('open', (e) => {
+            console.log('conneted to server')
+        })
+
+        socket.addEventListener('message', (e) => {
+            console.log(e)
+            const receiveedMsg = JSON.parse(e.data)
+
+            console.log(receiveedMsg)
+            const li = document.createElement('li')
+            li.innerText = `${receiveedMsg.username}: ${receiveedMsg.msg}`
+            chatArea.appendChild(li)
+        })
+
+        socket.addEventListener('error', (e) => {
+            console.log(`occured error: ${e.error}`)
+        })
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            let username = document.getElementById('username').value
+            let msg = document.getElementById('chat').value
+            const data = { username, msg }
+            socket.send(JSON.stringify(data))
+            console.log(msg)
+            document.getElementById('username').value = ''
+            document.getElementById('chat').value = ''
+        })
+    </script>
+</body>
+
+</html>

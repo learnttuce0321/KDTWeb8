@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Socket</h1>
+    <script>
+        const socket = new WebSocket("ws://localhost:8000")
+
+        socket.addEventListener('open', (e) => {
+            socket.send('Hello, Server')
+            console.log('conneted to server')
+        })
+
+        socket.addEventListener('message', (e) => {
+            console.log(`received message from server: ${e.data}`)
+        })
+
+        socket.addEventListener('error', (e) => {
+            console.log(`occured error: ${e.error}`)
+        })
+    </script>
+</body>
+
+</html>
