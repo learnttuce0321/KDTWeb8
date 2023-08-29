@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h1 id="textArea"></h1>
+    <button onclick="helloHandler()">hello</button>
+    <button onclick="studyHandler()">study</button>
+    <button onclick="byeHandler()">bye</button>
+
+    <script>
+        const socket = io()
+        const textArea = document.getElementById('textArea')
+        function helloHandler() {
+            socket.emit('practice1', 'hello')
+
+            textArea.innerText = 'hello: 안녕하세요'
+        }
+        function studyHandler() {
+            socket.emit('practice1', 'study')
+
+            textArea.innerText = 'study: 공부합시다'
+        }
+        function byeHandler() {
+            socket.emit('practice1', 'bye')
+
+            textArea.innerText = 'bye: 잘가요'
+        }
+    </script>
+</body>
+
+</html>

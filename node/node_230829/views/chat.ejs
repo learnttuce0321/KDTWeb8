@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <ul id="chatArea" style="padding: 0px;"></ul>
+    <form id="chatForm">
+        <input type="text" id="message" placeholder="chat!" />
+        <button>send</button>
+    </form>
+
+    <script>
+        const socket = io()
+        const username = prompt('이름을 입력하세요')
+
+        const chatForm = document.getElementById('chatForm')
+        const chatArea = document.getElementById('chatArea')
+
+        socket.emit('join', username)
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const message = chatForm.querySelector('#message')
+            socket.emit('message', { name: username, message: message.value })
+            message.value = ''
+        })
+        socket.on('usermessage', (data) => {
+            console.log(data);
+            const li = document.createElement('li')
+            li.innerText = `${data.name}: ${data.message}`
+            li.style.listStyleType = 'none'
+            li.style.marginLeft = data.name === username ? '200px' : '0px'
+            chatArea.appendChild(li)
+        })
+
+        socket.on('userjoin', (res) => {
+            console.log(res);
+        })
+    </script>
+</body>
+
+</html>
