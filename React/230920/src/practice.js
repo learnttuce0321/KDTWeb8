@@ -10,7 +10,7 @@ function App() {
         setTodoInput(e.target.value)
       }}/>
       <button onClick={() => {
-        if(toDoInput.length >= 10) {
+        if(toDoList.length >= 10) {
           alert('할게 너무 많아요!')
           return
         }
@@ -26,12 +26,14 @@ function App() {
             return(
               <li key={indexN}>
                 <input type='checkbox' checked={todoItem.checked} onChange={(e) => {
-                  console.log(todoItem.checked)
-                  const index = toDoList.findIndex(item => item.toDoInput === e.target.parentNode.innerText)
+                  // const index = toDoList.findIndex(item => item.toDoInput === e.target.parentNode.innerText)
 
-                  const tempTodoList = [...toDoList]
-                  tempTodoList[index].checked = !tempTodoList[index].checked
-                  setTodoList(tempTodoList)     
+                  // const tempTodoList = [...toDoList]
+                  // tempTodoList[index].checked = !tempTodoList[index].checked
+                  // setTodoList(tempTodoList)     
+
+                  const tempTodoList = toDoList.map(todoItem => todoItem.toDoInput === e.target.parentNode.innerText ? {...todoItem, checked: !todoItem.checked} : {...todoItem})
+                  setTodoList(tempTodoList)
                 }}/>
                 {todoItem.toDoInput}
               </li>

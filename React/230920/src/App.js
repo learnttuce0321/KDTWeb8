@@ -1,5 +1,6 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+
 function App() {
   
   const [board, setBoard] = useState([])
@@ -10,56 +11,28 @@ function App() {
   const [toDoInput, setTodoInput] = useState('')
   const [toDoList, setTodoList] = useState([])
 
-  console.log(toDoList)
+  const writerInputRef = useRef()
+  const titleInputRef = useRef()
+
   return (
     <>
-      <input placeholder='할일 추가' value={toDoInput} onChange={(e) => {
-        setTodoInput(e.target.value)
-      }}/>
-      <button onClick={() => {
-        if(toDoInput.length >= 10) {
-          alert('할게 너무 많아요!')
-          return
-        }
-
-        setTodoList(prev => [...prev, {toDoInput, checked: false}])
-        setTodoInput('')
-      }}>추가</button>
-
-      <ul>
-        {
-          toDoList.map((todoItem, indexN) => {
-            return(
-              <li key={indexN}><input type='checkbox' onChange={(e) => {
-                const index = toDoList.findIndex(item => item.toDoInput === e.target.parentNode.innerText)
-
-                const tempTodoList = toDoList
-                tempTodoList[index].checked = !tempTodoList[index].checked
-                setTodoList(tempTodoList)     
-              }}/>{todoItem.toDoInput}</li>
-            )
-          })
-        }
-      </ul>
-      <button onClick={() => {
-        const deletedList = toDoList.filter((toDoItem) => toDoItem.checked === false)
-
-        setTodoList(deletedList)
-      }}>완료된 할 일 삭제</button>
-      {/* {
-        visible ? <h1>사라져라 얍!</h1> : <h1 style={{visibility: 'hidden'}}>사라져라 얍!</h1>
-      }
-      <button onClick={() => {
-        setVisible(prev => !prev)
-      }}>사라지기</button> */}
-      {/* <fieldset>
+    <fieldset>
         <label>작성자</label>
-        <input placeholder='작성자' id='id'></input>
+        <input placeholder='작성자' id='id' ref={writerInputRef}></input>
         <label>제목</label>
-        <input placeholder='제목' id='title'></input>
+        <input placeholder='제목' id='title' ref={titleInputRef}></input>
         <button onClick={() => {
           const writer = document.getElementById('id').value
           const title = document.getElementById('title').value
+
+          if(writer.length === 0) {
+            writerInputRef.current.focus()
+            return
+          }
+          if(title.length === 0) {
+            titleInputRef.current.focus()
+            return;
+          }
 
           setBoard(prev => [...prev, {writer, title}])
         }}>작성</button>
@@ -130,7 +103,48 @@ function App() {
             })
           )
         }
-      </table> */}
+      </table>
+      {/* <input placeholder='할일 추가' value={toDoInput} ref={inputRef} onChange={(e) => {
+        setTodoInput(e.target.value)
+      }}/>
+      <button onClick={() => {
+        if(toDoInput.length >= 10) {
+          alert('할게 너무 많아요!')
+          return
+        }
+        if(toDoInput.length === 0) {
+          console.log(inputRef)
+        }
+        setTodoList(prev => [...prev, {toDoInput, checked: false}])
+        setTodoInput('')
+      }}>추가</button>
+
+      <ul>
+        {
+          toDoList.map((todoItem, indexN) => {
+            return(
+              <li key={indexN}><input type='checkbox' onChange={(e) => {
+                const index = toDoList.findIndex(item => item.toDoInput === e.target.parentNode.innerText)
+
+                const tempTodoList = toDoList
+                tempTodoList[index].checked = !tempTodoList[index].checked
+                setTodoList(tempTodoList)     
+              }}/>{todoItem.toDoInput}</li>
+            )
+          })
+        }
+      </ul>
+      <button onClick={() => {
+        const deletedList = toDoList.filter((toDoItem) => toDoItem.checked === false)
+
+        setTodoList(deletedList)
+      }}>완료된 할 일 삭제</button>
+      {
+        visible ? <h1>사라져라 얍!</h1> : <h1 style={{visibility: 'hidden'}}>사라져라 얍!</h1>
+      }
+      <button onClick={() => {
+        setVisible(prev => !prev)
+      }}>사라지기</button> */}
     </>
   );
 }
