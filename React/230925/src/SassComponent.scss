@@ -1,0 +1,99 @@
+$color-red: red;
+$color-orange: orange;
+$color-yellow: yellow;
+$color-green: green;
+$color-skyblue: skyblue;
+$color-navy: navy;
+$color-purple: purple;
+
+@mixin box($wd, $he) {
+    width: $wd;
+    height: $he;
+    border: none;
+    // border-radius: 50%;
+}
+@mixin animation ($delay, $duration, $name) {
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $name;
+    animation-iteration-count: infinite;
+}
+
+@mixin keyframe($animation_name, $deg) {
+    @keyframes #{$animation_name} {
+        0% {
+            transform: translate(0px, 0px);
+        }
+        25% {
+            transform: translate($deg, 0px);
+        }
+        50% {
+            transform: translate($deg ,$deg);
+        }
+        75% {
+            transform: translate(0px, $deg);
+        }
+        100% {
+            transform: translate(0px)
+        }
+    }
+}
+
+@include keyframe(rot100, 100px);
+@include keyframe(rot200, 200px);
+@include keyframe(rot300, 300px);
+
+.SassComponent {
+    width: 500px;
+
+    .box {
+        @include box(100px, 100px);
+        
+        
+        &.red {
+            background-color: $color-red; 
+            @include animation(0s, 2s, rot100);
+        }
+    
+        &.orange {
+            background-color: $color-orange;
+            @include animation(0s, 2s, rot200);
+        }
+    
+        &.yellow {
+            background-color: $color-yellow;
+            @include animation(0s, 2s, rot300);
+        }
+        
+        &.green {
+            background-color: $color-green;
+        }
+        
+        &.skyblue {
+            background-color: $color-skyblue;
+        }
+        
+        &.navy {
+            background-color: $color-navy;
+        }
+        
+        &.purple {
+            background-color: $color-purple;
+        }
+    }
+}
+
+
+
+
+    // animation-name: animationEffect; //적용할 애니메이션
+    // animation-duration: 10s; //애니메이션 지속시간
+    // animation-fill-mode: forwards;
+    // //애니메이션의 마지막 상태를 유지하고 싶을 때 사용
+    // animation-fill-mode: backwards;
+    // //애니메이션이 끝난 후 시작점으로 돌아옵니다. 
+    // animation-fill-mode: both;
+    // //애니메이션의 앞 뒤 결과를 조합하여 설정
+    // animation-iteration-count: 3; //애니메이션을 실행하는 횟 수
+    // animation-delay: 3; //애니메이션을 3초있다가 실행하도록~
+
