@@ -31,6 +31,7 @@ function App() {
 
   const inputRef = useRef()
   const [todos, setTodos] = useState([])
+  const [Input, setInput] = useState('')
   return (
     <div>
       {/* <ColorDiv backgroundColor={backgroundColor} color={color}>{text}</ColorDiv>
@@ -47,10 +48,20 @@ function App() {
       }}>색상 변경</button> */}
       {/* <input ref={inputRef}/>  */}
       <_Input ref={inputRef} />
+      <_Input onChange={(e) => {
+        setInput(e.target.value) 
+        console.log(Input)
+      }} />
       <button onClick={() => {
-        const input = inputRef.current
+        // useRef 용
+        // const input = inputRef.current
+        // setTodos(prev => [...prev, input.value])
 
-        setTodos(prev => [...prev, input.value])
+        // onChange 용
+        const input = Input
+        setTodos(prev => [...prev, input])
+
+        
       }}>Add</button>
       <Container >
         {
