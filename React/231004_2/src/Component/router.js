@@ -1,6 +1,6 @@
 import {createBrowserRouter} from 'react-router-dom'
 import Product from './Product'
-import App from './App'
+import App from '../App'
 import Cart from './Cart'
 
 const router = createBrowserRouter([

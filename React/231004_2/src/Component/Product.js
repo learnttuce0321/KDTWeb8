@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import cartContext from "./store/cartContext"
+import { useContext, useMemo } from "react"
+import cartContext from "../store/cartContext"
 
 const product = [
   {
@@ -19,8 +19,32 @@ const product = [
     name: 'c',
     price: 30000,
     info: 'CCCCCCCCCCCCCCCCC'
-  }
+  },
+  {
+    id: 4,
+    name: 'd',
+    price: 30000,
+    info: 'DDDDDDDDDDDDDDDDD'
+  },
 ]
+
+const productContainerStyle = {
+    width: '100vw',
+    display: 'flex',
+    flexWrap: 'wrap',
+    boxSizing: 'border-box',
+    padding: '5rem',
+    justfyContent: 'center'
+}
+const productStyle = {
+    flex: '1 300px',
+    boxSizing: 'border-box',
+    maxWidth: '25%',
+    borderRadius: '2rem',
+    boxShadow: '1px 1px 9px 1px lightgray',
+    margin: '0.5rem',
+    padding: '1rem'
+}
 
 export default function Product() {
     const {shoppingCart, setShoppingCart} = useContext(cartContext)
@@ -40,13 +64,14 @@ export default function Product() {
 
         setShoppingCart(prev => [...prev, {...product, count: 1}])
     }
+    
     return (
-        <div>
+        <div style={productContainerStyle}>
             {
                 product.map((item) => {
                     return (
-                        <div key={item.id}>
-                            <h1>{item.name}</h1>
+                        <div key={item.id} style={productStyle}>
+                            <h1 style={{margin: 0}}>{item.name}</h1>
                             <p>{item.info}</p>
                             <h3>{item.price}</h3>
                             <button onClick={() => {addHandler(item)}}>장바구니 담기</button>
