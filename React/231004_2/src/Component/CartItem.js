@@ -1,13 +1,15 @@
-import { memo, useContext } from "react"
-import cartContext from "../store/cartContext"
+import { memo } from "react"
+import { useDispatch } from "react-redux"
+import { deleteCart } from "../store/store"
 export default memo(function CartItem({item}) {
 
-    const {shoppingCart, setShoppingCart} = useContext(cartContext)
+    const dispatch = useDispatch()
 
     const deleteHandler = (product) => {
-        if(window.confirm('삭제하겠습니까?')) {
-            setShoppingCart(shoppingCart.filter((item) => item.id !== product.id))
-        }
+        // if(window.confirm('삭제하겠습니까?')) {
+        //     setShoppingCart(shoppingCart.filter((item) => item.id !== product.id))
+        // }
+        dispatch(deleteCart({product: product}))
     }
 
     const productStyle = {

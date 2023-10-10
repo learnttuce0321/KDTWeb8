@@ -1,5 +1,5 @@
-import { useContext, useMemo } from "react"
-import cartContext from "../store/cartContext"
+import { useDispatch } from 'react-redux'
+import { addCart } from "../store/store"
 
 const product = [
   {
@@ -47,22 +47,23 @@ const productStyle = {
 }
 
 export default function Product() {
-    const {shoppingCart, setShoppingCart} = useContext(cartContext)
+    const dispatch = useDispatch()
 
     const addHandler = (product) => {
 
-        const matchedProductIndex = shoppingCart.findIndex((item) => {
-            return item.id === product.id
-        })
+        // const matchedProductIndex = shoppingCart.findIndex((item) => {
+        //     return item.id === product.id
+        // })
 
-        if(matchedProductIndex !== -1) {
-            const tempShoppingCart = [...shoppingCart]
-            tempShoppingCart[matchedProductIndex].count += 1
-            setShoppingCart(tempShoppingCart)
-            return
-        }
+        // if(matchedProductIndex !== -1) {
+        //     const tempShoppingCart = [...shoppingCart]
+        //     tempShoppingCart[matchedProductIndex].count += 1
+        //     setShoppingCart(tempShoppingCart)
+        //     return
+        // }
 
-        setShoppingCart(prev => [...prev, {...product, count: 1}])
+        // setShoppingCart(prev => [...prev, {...product, count: 1}])
+        dispatch(addCart({product: product}))
     }
     
     return (
@@ -72,7 +73,7 @@ export default function Product() {
                     return (
                         <div key={item.id} style={productStyle}>
                             <h1 style={{margin: 0}}>{item.name}</h1>
-                            <p>{item.info}</p>
+                            <p>{item.info.length < 8 ? item.info : item.info.slice(8) + ' ...'}</p>
                             <h3>{item.price}</h3>
                             <button onClick={() => {addHandler(item)}}>장바구니 담기</button>
                         </div>
